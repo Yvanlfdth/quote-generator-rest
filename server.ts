@@ -3,7 +3,7 @@ import Server from "@src/index";
 
 const app: Application = express();
 const server: Server = new Server(app);
-const PORT: number = process.env.PORT ? parseInt(process.env.PORT, 10) : 80;
+const PORT: number = process.env.PORT ? parseInt(process.env.PORT, 10) : 80; // get port from .env, otherwise inits it at 80 (http)
 
 app.listen(PORT, "localhost", function () {
     console.log(`Server is running on port ${PORT}.`);

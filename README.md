@@ -24,6 +24,11 @@ npm install
 npm run dev
 ```
 
+- The first time you run the app, you should run the following route to populate the database for authors, quotes and tags collections (replace .env variables with your own data):
+```
+http://${DATABASE_SERVER}:{PORT}/setup/db/init
+```
+
 # Project Structure
 The folder structure of this app is explained below:
 
