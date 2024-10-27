@@ -13,7 +13,9 @@ export default class Server {
     private config(app: Application): void {
         dotenv.config();    // inits dotenv package so .env variables are accessible through the code
         const corsOptions: CorsOptions = {  // sets cors origin to avoid cors errors
-            origin: "http://localhost:3000"
+            origin: "http://localhost:3000",
+            credentials: true,
+            allowedHeaders: ["Content-Type", "Authorization "],
         };
 
         /**

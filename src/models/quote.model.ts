@@ -11,7 +11,9 @@ const quoteSchema = new Schema({
     author: { type: String, required: true },
     slug: { type: String, required: true },
     tags: [String]
-}, { timestamps: true });
-
+}, {
+    timestamps: true,
+    autoCreate: true
+});
 export type QuoteModel = Model<IQuote> & IQuote;
 export const Quote: QuoteModel = <QuoteModel>model<IQuote>("Quote", quoteSchema);

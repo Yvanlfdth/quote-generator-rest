@@ -5,6 +5,7 @@ import fs from "fs";
 import { Author } from '@models/author.model';
 import { Quote } from '@models/quote.model';
 import { Tag } from '@models/tag.model';
+import { User } from '@models/user.model';
 
 export default class QuoteController {
     /**
@@ -17,6 +18,16 @@ export default class QuoteController {
         let authors = null;
         let quotes = null;
         let tags = null;
+
+        // first resets the db users collection
+        try {
+            await User.find().deleteMany({});
+        }
+        catch(err) {
+            res.status(400).send("empty_db_user_collection_error");
+            return;
+        }
+
         // gets data from json files (from root "assets" dir)
         try {
             authors = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../assets/init/authors.json'), 'utf8'));
@@ -34,14 +45,14 @@ export default class QuoteController {
             return;
         }
 
-        // if no error, first resets the db tables
+        // if no error, resets the db collections (except users)
         try {
             await Author.find().deleteMany({});
             await Quote.find().deleteMany({});
             await Tag.find().deleteMany({});
         }
         catch(err) {
-            res.status(400).send("empty_db_tables_error");
+            res.status(400).send("empty_db_collections_error");
             return;
         }
 

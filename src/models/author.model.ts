@@ -13,7 +13,10 @@ const authorSchema = new Schema({
     slug: { type: String, required: true },
     bio: String,
     description: String,
-}, { timestamps: true });
+}, {
+    timestamps: true,
+    autoCreate: true
+});
 
 export type AuthorModel = Model<IAuthor> & IAuthor;
 export const Author: AuthorModel = <AuthorModel>model<IAuthor>("Author", authorSchema);

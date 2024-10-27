@@ -69,7 +69,6 @@ http://${SERVER}:{PORT}/quotes/random/one
 Those return one quote object. The 2 routes exactly do the same thing.
 
 ## Filters
-
 You can use those filters if you want more specific quotes:
 
  Filter | Type | Description |
@@ -80,3 +79,18 @@ You can use those filters if you want more specific quotes:
 | `tags`                    | String | Tags separated by a comma (find quotes that have all the tags) or a pipe (find quotes that have any of the tags) |
 | `author`                  | String | list of authors separated by a pipe (find quotes that have any of the authors), can be a name or a slug          |
 | `authorId`                | String | Same as `author` but contains author ids (if not empty, the `author` filter is ignored)                          |
+
+# Data CRUD
+
+## Authentication
+First create a user in the users collections with the following information:
+- username: the name to log in
+- password: password crypted by using bcrypt
+- role: admin
+
+Then edit .env file `JWT_SECRET_KEY` with your own key.
+
+Finally log in with your credentials using this route:
+```
+http://${SERVER}:{PORT}/auth/login
+```
