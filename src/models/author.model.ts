@@ -10,6 +10,7 @@ export interface IAuthor extends Document {
 const authorSchema = new Schema({
     name: { type: String, required: true },
     link: { type: String, required: true },
+    slug: { type: String, required: true },
     bio: String,
     description: String,
 }, { timestamps: true });

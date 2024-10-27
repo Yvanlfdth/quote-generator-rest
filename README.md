@@ -42,5 +42,41 @@ The folder structure of this app is explained below:
 | **src/models**           | Models define schemas that will be used in storing and retrieving data from Application database  |
 | **src**/index.ts         | Entry point to express app                                                               |
 | server.ts                | Entry point to the whole app that makes the server running                               |
-| package.json             | Contains npm dependencies as well as build scripts  |
-| tsconfig.json            | Config settings for compiling source code only and paths definition    |
+| package.json             | Contains npm dependencies as well as build scripts                                       |
+| tsconfig.json            | Config settings for compiling source code only and paths definition                      |
+
+# App purpose
+The app is designed to get random quotes, with (not required) filters. To get random quotes, use one of this routes:
+
+## To get multiple quotes
+```
+http://${SERVER}:{PORT}/quotes/random
+```
+
+This returns an array of quote objects
+
+## To get only one quote
+```
+http://${SERVER}:{PORT}/random
+```
+
+OR
+
+```
+http://${SERVER}:{PORT}/quotes/random/one
+```
+
+Those return one quote object. The 2 routes exactly do the same thing.
+
+## Filters
+
+You can use those filters if you want more specific quotes:
+
+ Filter | Type | Description |
+| ------------------------- | -------|----------------------------------------------------------------------------------------------------------------- |
+| `limit`                   | Number | Limits the number of quotes returned (min: 1, max: 50). Used only for multiple quotes                            |
+| `minLength`               | Number | Sets the minimum length of quotes content to search                                                              |
+| `maxLength`               | Number | Sets the maximum length of quotes content to search                                                              |
+| `tags`                    | String | Tags separated by a comma (find quotes that have all the tags) or a pipe (find quotes that have any of the tags) |
+| `author`                  | String | list of authors separated by a pipe (find quotes that have any of the authors), can be a name or a slug          |
+| `authorId`                | String | Same as `author` but contains author ids (if not empty, the `author` filter is ignored)                          |

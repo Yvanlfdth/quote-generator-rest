@@ -10,7 +10,8 @@ class QuoteRoutes {
     }
 
     intializeRoutes() {
-        this.router.get('/random', this.quoteController.getRandomQuote);
+        this.router.post('/random', this.quoteController.getRandomQuotes);
+        this.router.post('/random/one', this.quoteController.getOneRandomQuote);
     }
 }
 

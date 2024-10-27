@@ -9,6 +9,7 @@ export interface IQuote extends Document {
 const quoteSchema = new Schema({
     content: { type: String, required: true },
     author: { type: String, required: true },
+    slug: { type: String, required: true },
     tags: [String]
 }, { timestamps: true });
 

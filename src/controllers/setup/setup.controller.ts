@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import slugify from "slugify";
 import path from 'path';
 import fs from "fs";
 import { Author } from '@models/author.model';
@@ -52,6 +53,7 @@ export default class QuoteController {
                 authorsArr.push({
                     name: author.name,
                     link: author.link,
+                    slug: slugify(author.name),
                     bio: author?.bio || null,
                     description: author?.description || null
                 });
@@ -77,6 +79,7 @@ export default class QuoteController {
                 quotesArr.push({
                     content: quote.content,
                     author: quote.author,
+                    slug: slugify(quote.content),
                     tags: quote?.tags || []
                 });
             }
@@ -99,7 +102,8 @@ export default class QuoteController {
             // try... catch used in case of missing required fields
             try {
                 tagsArr.push({
-                    name: tag.name
+                    name: tag.name,
+                    slug: slugify(tag.name),
                 });
             }
             catch(err) {

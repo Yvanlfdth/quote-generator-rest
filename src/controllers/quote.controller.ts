@@ -1,10 +1,27 @@
 import { Request, Response } from "express";
 import MiscService from "@src/services/_misc.service";
-import { Quote } from '@models/quote.model';
+import QuoteService from "@src/services/quote.service";
 
 export default class QuoteController {
-    async getRandomQuote(req: Request, res: Response) {
-        const quotes = await Quote.find();
-        res.send(quotes);
+    /**
+     * get random quotes, based on parameters
+     * @param {Request} req - the request initiated by the client
+     * @param {Response} res - the response to send the client
+     */
+    async getRandomQuotes(req: Request, res: Response) {
+        const miscService = new MiscService();
+        let body = miscService.sanitizeData(req.body);
+        new QuoteService().getQuotes(body, res, true);
+    };
+
+    /**
+     * get one random quote, based on parameters
+     * @param {Request} req - the request initiated by the client
+     * @param {Response} res - the response to send the client
+     */
+    async getOneRandomQuote(req: Request, res: Response) {
+        const miscService = new MiscService();
+        let body = miscService.sanitizeData(req.body);
+        new QuoteService().getQuotes(body, res, false);
     };
 }
