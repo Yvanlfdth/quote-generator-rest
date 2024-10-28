@@ -7,7 +7,7 @@ API that shows a random quote from a database
 # Getting started
 - Clone the repository
 ```
-git clone  https://github.com/Yvanlfdth/quote-generator-rest.git
+git clone https://github.com/Yvanlfdth/quote-generator-rest.git
 ```
 - Install dependencies
 ```
