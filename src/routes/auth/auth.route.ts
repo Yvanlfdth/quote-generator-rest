@@ -11,6 +11,7 @@ class AuthRoutes {
 
     intializeRoutes() {
         this.router.post('/login', this.loginController.login);
+        this.router.post('/logout', this.loginController.logout);
     }
 }
 

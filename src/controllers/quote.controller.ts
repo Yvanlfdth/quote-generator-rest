@@ -4,7 +4,7 @@ import QuoteService from "@src/services/quote.service";
 
 export default class QuoteController {
     /**
-     * get random quotes, based on parameters
+     * Get random quotes, based on parameters
      * @param {Request} req - the request initiated by the client
      * @param {Response} res - the response to send the client
      */
@@ -15,7 +15,7 @@ export default class QuoteController {
     };
 
     /**
-     * get one random quote, based on parameters
+     * Get one random quote, based on parameters
      * @param {Request} req - the request initiated by the client
      * @param {Response} res - the response to send the client
      */
