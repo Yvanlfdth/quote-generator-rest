@@ -94,3 +94,10 @@ Finally log in with your credentials using this route:
 ```
 http://${SERVER}:{PORT}/auth/login
 ```
+
+# Testing
+The API uses jest to perform testing. Use this command line to test the API:
+
+```
+npm test
+```
