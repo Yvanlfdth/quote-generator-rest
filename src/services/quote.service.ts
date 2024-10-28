@@ -87,7 +87,6 @@ export default class QuoteService {
                     authorsArr[i] = slugify(aut);   // slugifies each author name to ease the treatment
                 });
             }
-            console.log(authorsArr)
             if(authorsArr.length) {       // if authors were found
                 // gets all authors from db that match the authors passed in parameter
                 authors = await Author.find({
