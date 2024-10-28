@@ -1,6 +1,6 @@
 {
   "name": "quote-generator-rest",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "API that shows a random quote from a database",
   "main": "server.ts",
   "scripts": {
