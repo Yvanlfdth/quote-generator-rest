@@ -10,7 +10,7 @@ export default class QuoteController {
      */
     async getRandomQuotes(req: Request, res: Response) {
         const miscService = new MiscService();
-        let body = miscService.sanitizeData(req.body);
+        const body = miscService.sanitizeData(req.body);
         new QuoteService().getQuotes(body, res, true);
     };
 
@@ -21,7 +21,8 @@ export default class QuoteController {
      */
     async getOneRandomQuote(req: Request, res: Response) {
         const miscService = new MiscService();
-        let body = miscService.sanitizeData(req.body);
+        const body = miscService.sanitizeData(req.body);
+        console.log(body)
         new QuoteService().getQuotes(body, res, false);
     };
 }

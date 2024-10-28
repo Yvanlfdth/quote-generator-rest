@@ -5,7 +5,7 @@ import { Quote } from '@models/quote.model';
 import MiscService from '@services/_misc.service';
 
 /**
- * MiscService purpose is to provide miscellenaous functions to use anywhere
+ * Functions used in QuoteController
  */
 export default class QuoteService {
     /**
@@ -21,6 +21,7 @@ export default class QuoteService {
         const tags = body?.tags || null;
         const author = body?.author || null;
         const authorId = body?.authorId || null;
+        const miscService = new MiscService();
         
         let match: any = {};    // match used for aggregation
         if(minLength || maxLength || tags || author || authorId) {
@@ -28,22 +29,24 @@ export default class QuoteService {
         }
         // minLength filter
         if(minLength) {
+            let miLe = miscService.sanitize(minLength);
             match['$and'].push({
                 $expr: {
                     $gt: [
                         { $strLenCP: '$content' },
-                        minLength - 1
+                        miLe - 1
                     ]
                 }
             });
         }
         // maxLength filter
         if(maxLength) {
+            let maLe = miscService.sanitize(minLength);
             match['$and'].push({
                 $expr: {
                     $lt: [
                         { $strLenCP: '$content' },
-                        maxLength + 1
+                        maLe + 1
                     ]
                 }
             });
@@ -73,7 +76,6 @@ export default class QuoteService {
             let authors: any;
             let field = "_id";  // field used to filter, depending on author or authorId passed in parameter, default: _id
             if(authorId) {
-                const miscService = new MiscService();
                 authorsArr = authorId.split("|");
                 authorsArr.forEach((aut: any, i: number) => {
                     miscService.checkIdFormat(aut, res);

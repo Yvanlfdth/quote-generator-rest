@@ -48,13 +48,16 @@ export default class MiscService {
     sanitize(value: any) {
         if(value instanceof Object) {
             for(var key in value) {
-                if (/^\$/.test(key)) {
+                if(/^\$/.test(key)) {
                     delete value[key];
                 }
                 else {
                     this.sanitize(value[key]);
                 }
             }
+        }
+        if(/^\d+$/.test(value)) {
+            value = parseInt(value);
         }
 
         return value;
